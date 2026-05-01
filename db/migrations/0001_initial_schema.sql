@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  email TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL,
+  name TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS recipes (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT,
+  ingredients TEXT NOT NULL,
+  instructions TEXT NOT NULL,
+  cooking_time INTEGER,
+  servings INTEGER,
+  tags TEXT,
+  date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id);

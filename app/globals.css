@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #eef2ff;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-muted: #f8f3ff;
+  --border: #daddff;
+  --accent: #4f46e5;
+  --accent-soft: #eef2ff;
+  --accent-dark: #3730a3;
 }
 
 @theme inline {
@@ -14,13 +20,44 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #e2e8f0;
+    --surface: #111827;
+    --surface-muted: #1e293b;
+    --border: #334155;
+    --accent: #818cf8;
+    --accent-soft: #475569;
+    --accent-dark: #4338ca;
   }
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(circle at top left, rgba(99,102,241,0.18), transparent 25%),
+    linear-gradient(180deg, #eef2ff 0%, #ffffff 45%, #f8fafc 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .bg-surface {
+    background-color: var(--surface);
+  }
+  .bg-surface-muted {
+    background-color: var(--surface-muted);
+  }
+  .border-surface {
+    border-color: var(--border);
+  }
+  .text-accent {
+    color: var(--accent);
+  }
+  .bg-accent {
+    background-color: var(--accent);
+  }
+  .bg-accent-soft {
+    background-color: var(--accent-soft);
+  }
+  .text-accent-dark {
+    color: var(--accent-dark);
+  }
 }
