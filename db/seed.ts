@@ -3,7 +3,7 @@ import postgres from 'postgres';
 import bcryptjs from 'bcryptjs';
 
 async function seed() {
-  const connectionString = process.env.DATABASE_URL;
+  const connectionString = process.env.TEST_DATABASE_URL || process.env.DATABASE_URL;
 
   if (!connectionString) {
     console.error('DATABASE_URL environment variable is not set');
