@@ -47,7 +47,7 @@ export async function POST(
       return notFoundResponse();
     }
 
-    if (recipe.userId !== auth.userId) {
+    if (recipe.userId !== auth.id) {
       return forbiddenResponse();
     }
 

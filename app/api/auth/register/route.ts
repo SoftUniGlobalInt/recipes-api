@@ -45,13 +45,17 @@ export async function POST(request: NextRequest) {
 
     // Create JWT token
     const token = signToken({
-      userId: newUser[0].id,
+      id: newUser[0].id,
       email: newUser[0].email,
+      isAdmin: false,
     });
 
     // Create response with cookie
     const response = createdResponse({
-      user: newUser[0],
+      user: {
+        ...newUser[0],
+        isAdmin: false,
+      },
       token,
     });
 

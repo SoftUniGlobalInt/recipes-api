@@ -38,8 +38,9 @@ export async function POST(request: NextRequest) {
 
     // Create JWT token
     const token = signToken({
-      userId: user.id,
+      id: user.id,
       email: user.email,
+      isAdmin: user.isAdmin,
     });
 
     // Create response with cookie
@@ -48,6 +49,7 @@ export async function POST(request: NextRequest) {
         id: user.id,
         email: user.email,
         name: user.name,
+        isAdmin: user.isAdmin,
       },
       token,
     });

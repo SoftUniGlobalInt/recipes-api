@@ -33,6 +33,14 @@ export default function Header() {
           ) : user ? (
             <>
               <span className="text-sm text-slate-700">Hi, {user.name}</span>
+              {user.isAdmin && (
+                <Link
+                  href="/admin"
+                  className="rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-3 py-1 text-sm font-medium text-white transition hover:brightness-110"
+                >
+                  Admin Panel
+                </Link>
+              )}
               <Link
                 href="/my-recipes"
                 className="rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-3 py-1 text-sm font-medium text-white transition hover:brightness-110"

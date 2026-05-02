@@ -68,7 +68,7 @@ export async function PATCH(
       return notFoundResponse();
     }
 
-    if (recipe.userId !== auth.userId) {
+    if (recipe.userId !== auth.id) {
       return forbiddenResponse();
     }
 
@@ -145,7 +145,7 @@ export async function DELETE(
       return notFoundResponse();
     }
 
-    if (recipe.userId !== auth.userId) {
+    if (recipe.userId !== auth.id) {
       return forbiddenResponse();
     }
 

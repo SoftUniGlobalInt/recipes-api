@@ -4,8 +4,9 @@ const SECRET: jwt.Secret = process.env.JWT_SECRET ?? 'default_jwt_secret';
 const EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
 export interface TokenPayload {
-  userId: number;
+  id: number;
   email: string;
+  isAdmin: boolean;
 }
 
 export function signToken(payload: TokenPayload): string {

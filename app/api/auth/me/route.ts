@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
 
     // Get user from database
     const user = await db.query.users.findFirst({
-      where: eq(users.id, auth.userId),
+      where: eq(users.id, auth.id),
     });
 
     if (!user) {
@@ -26,6 +26,7 @@ export async function GET(request: NextRequest) {
       id: user.id,
       email: user.email,
       name: user.name,
+      isAdmin: user.isAdmin,
     });
   } catch (error) {
     console.error('Get user error:', error);
