@@ -138,7 +138,7 @@ export async function POST(request: NextRequest) {
         cookingTime,
         servings,
         tags,
-        userId: auth.userId,
+        userId: auth.id,
       })
       .returning();
 

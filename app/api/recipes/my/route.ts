@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     const countResult = await db
       .select({ count: db.$count(recipes) })
       .from(recipes)
-      .where(eq(recipes.userId, auth.userId));
+      .where(eq(recipes.userId, auth.id));
 
     const total = countResult[0]?.count || 0;
 
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     const userRecipes = await db
       .select()
       .from(recipes)
-      .where(eq(recipes.userId, auth.userId))
+      .where(eq(recipes.userId, auth.id))
       .orderBy(recipes.dateCreated)
       .limit(pageSize)
       .offset(offset);
