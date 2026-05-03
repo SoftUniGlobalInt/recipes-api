@@ -59,7 +59,7 @@ describe('auth routes', () => {
     const response = await registerPOST(request);
 
     expect(response.status).toBe(201);
-    expect(signToken).toHaveBeenCalledWith({ userId: 1, email: 'test@example.com' });
+    expect(signToken).toHaveBeenCalledWith({ id: 1, email: 'test@example.com', isAdmin: false });
   });
 
   it('returns 401 when login credentials are invalid', async () => {
